@@ -1,0 +1,1 @@
+# Symptoma API client

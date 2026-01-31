@@ -16,8 +16,8 @@
 │  • Cure plan display                                      │
 │  • Video player embedded                                  │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │                  API LAYER (Next.js)                       │
 │                                                            │
@@ -25,13 +25,13 @@
 │  /api/analyze/route.ts   → Symptom collection             │
 │  /api/cure/route.ts      → Treatment generation           │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │                   PROCESSING FLOW                          │
 └────────────────────────────────────────────────────────────┘
 
-                      ▼
+							 ▼
 
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 1: SYMPTOM COLLECTION (Multi-turn)                  │
@@ -50,8 +50,8 @@
 │  □ Associated symptoms                                    │
 │  □ Red flag questions answered                            │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 2: RED FLAG CHECK (Code-based rules)                │
 │  ───────────────────────────────────────                  │
@@ -73,8 +73,8 @@
 │  If RED FLAG detected → STOP and redirect to ER/doctor    │
 │  If SAFE → Continue to diagnosis                          │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 3: DIAGNOSIS (Symptoma API - FREE 10k/month)        │
 │  ────────────────────────────────────────────             │
@@ -112,8 +112,8 @@
 │                                                            │
 │  Take top condition (highest probability)                 │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 4: GET OFFICIAL TREATMENT (MedlinePlus - FREE)      │
 │  ──────────────────────────────────────────────────       │
@@ -146,8 +146,8 @@
 │    }                                                      │
 │  }                                                        │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 5: PARSE TREATMENT INTO CURE PLAN (BioMistral)      │
 │  ───────────────────────────────────────────────────      │
@@ -200,8 +200,8 @@
 │    ]                                                      │
 │  }                                                        │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 6: VALIDATE MEDICATIONS (OpenFDA - FREE)            │
 │  ────────────────────────────────────────────────         │
@@ -233,8 +233,8 @@
 │  ✓ Add official warnings to display                      │
 │  ✓ Flag any discrepancies                                │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 7: FIND OFFICIAL VIDEOS (YouTube API - FREE)        │
 │  ─────────────────────────────────────────────────        │
@@ -272,8 +272,8 @@
 │  Repeat for Mayo Clinic and Cleveland Clinic channels     │
 │  Collect 2-3 relevant videos total                        │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 8: ASSEMBLE FINAL RESPONSE                          │
 │  ──────────────────────────────────                       │
@@ -329,8 +329,8 @@
 │    ]                                                      │
 │  }                                                        │
 └─────────────────────┬──────────────────────────────────────┘
-                      │
-                      ▼
+							 │
+							 ▼
 ┌────────────────────────────────────────────────────────────┐
 │  STEP 9: DISPLAY TO USER                                  │
 │  ──────────────────────────                               │
@@ -477,33 +477,33 @@ biopilot/
 
 ```
 1. User types: "I have a headache"
-   ↓
+	↓
 2. BioMistral asks: "Where exactly? Both sides or one side?"
-   User: "Both sides"
-   ↓
+	User: "Both sides"
+	↓
 3. BioMistral asks: "How would you describe it?"
-   User: "Dull, pressing feeling"
-   ↓
+	User: "Dull, pressing feeling"
+	↓
 4. BioMistral asks: "Rate pain 1-10"
-   User: "5"
-   ↓
+	User: "5"
+	↓
 5. BioMistral asks: "Any nausea or light sensitivity?"
-   User: "No"
-   ↓
+	User: "No"
+	↓
 6. Red flag check: ✅ SAFE
-   ↓
+	↓
 7. Symptoma API diagnoses:
-   → Tension headache (87% confidence)
-   → ICD-10: G44.209
-   ↓
+	→ Tension headache (87% confidence)
+	→ ICD-10: G44.209
+	↓
 8. MedlinePlus API fetches treatment article
-   ↓
+	↓
 9. BioMistral formats into 3-day plan
-   ↓
+	↓
 10. OpenFDA validates Ibuprofen dosage
-   ↓
+	↓
 11. YouTube API finds 2 NIH videos
-   ↓
+	↓
 12. User sees complete cure plan with videos + references
 ```
 
